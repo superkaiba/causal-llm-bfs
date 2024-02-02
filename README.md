@@ -12,7 +12,7 @@ To reproduce the results from the paper, run
 
 with the desired `DATASET_NAME`, `ALG_NAME`, and `N_SAMPLES`
 
-The results 
+The results will be saved in `./logs/DATASET_NAME/N_SAMPLES/alg.json`
 The supported values for `DATASET_NAME` are:
 - `asia`
 - `child`

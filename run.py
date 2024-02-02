@@ -55,6 +55,9 @@ else:
 metrics = compute_metrics(adj_mat, predicted_adj_mat)
 logdir = f"{args.logdir}/{args.dataset}/{args.n_samples}"
 os.makedirs(logdir, exist_ok=True)
-logfile = f"{logdir}/{args.alg}_lambda1={args.lambda1}.json"
+logfile = f"{logdir}/{args.alg}" 
+if args.alg in ['dagma_nonlinear', 'dagma_linear', 'notears']:
+  logfile += f"_lambda1={args.lambda1}"
+logfile += ".json"
 with open(logfile, "w") as outfile: 
     json.dump(metrics, outfile)

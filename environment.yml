@@ -1,4 +1,4 @@
-name: LLM_causal_test
+name: LLM_for_causal
 channels:
   - defaults
   - conda-forge

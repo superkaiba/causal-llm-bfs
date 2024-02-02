@@ -12,21 +12,21 @@ To reproduce the results from the paper, run
 
 with the desired `DATASET_NAME`, `ALG_NAME`, and `N_SAMPLES`
 
+The results 
 The supported values for `DATASET_NAME` are:
-- `alarm`
 - `asia`
 - `child`
-- `insurance`
 - `neuropathic`
-
 
 The supported values for `ALG_NAME` are:
 - `pc`
 - `ges`
 - `notears`
 - `dagma_linear`
-- `llm_pairwise`
-- `llm_bfs`
+- `llm_pairwise` (Note that to run `llm_pairwise` you must provide a valid OpenAI API key in `algs/llm/pairwise.py`)
+- `llm_pairwise_with_statistics` (Note that to run `llm_pairwise_with_statistics` you must provide a valid OpenAI API key in `algs/llm/pairwise.py`)
+- `llm_bfs` (Note that to run `llm_bfs` you must provide a valid OpenAI API key in `algs/llm/bfs.py`)
+- `llm_bfs_with_statistics` (Note that to run `llm_bfs_with_statistics` you must provide a valid OpenAI API key in `algs/llm/bfs.py`)
 
 The supported values for `N_SAMPLES` are:
 - 100

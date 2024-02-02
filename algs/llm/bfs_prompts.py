@@ -7,7 +7,7 @@ asia_prompt=[
     },
     {
       "role": "user",
-      "content": "You are a helpful assistant to experts in lung diesease research. Our goal is to construct a casual graph between the following variables.\n"
+      "content": "You are a helpful assistant to experts in lung diesease research. Our goal is to construct a causal graph between the following variables.\n"
     }
   ]
 
@@ -19,30 +19,7 @@ child_prompt=[
     },
     {
       "role": "user",
-      "content": "You are a helpful assistant to experts in children's diesease research. Our goal is to construct a casual graph between the following variables.\n"
-    }
-  ]
-
-
-alarm_prompt=[
-    {
-      "role": "system",
-      "content": "You are an expert on clinical diagnosis."
-    },
-    {
-      "role": "user",
-      "content": "You are a helpful assistant to experts in medical research. We are implementing an alarm message system for patient monitoring; it calculates probabilities for a differential diagnosis based on available evidence. Our goal is to construct a casual graph between the following variables.\n"
-    }
-  ]
-
-insurance_prompt=[
-    {
-      "role": "system",
-      "content": "You are an expert on estimating the expected claim costs car insurance."
-    },
-    {
-      "role": "user",
-      "content": "You are a helpful assistant to actuaries in insurance company. Our goal is to construct a casual graph between the following variables to predict claim costs for a car insurance policyholder.\n"
+      "content": "You are a helpful assistant to experts in children's diesease research. Our goal is to construct a causal graph between the following variables.\n"
     }
   ]
 

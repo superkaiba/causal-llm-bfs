@@ -1,6 +1,4 @@
 import numpy as np
-import pickle
-# This code is for v1 of the openai package: pypi.org/project/openai
 from openai import OpenAI
 import random
 from tqdm.autonotebook import tqdm
@@ -8,10 +6,9 @@ from .utils import PreviousEdges
 from itertools import combinations
 
 
-def llm_pairwise(var_names_and_desc, prompts, df):
+def llm_pairwise(var_names_and_desc, prompts, df, include_statistics=False):
     client = OpenAI(api_key='...')
 
-    # causal_graph = pickle.load(open('dataset/Neuropathic-Pain-Diagnosis-Simulator-master/models/bnm.pickle', 'rb'))
     # list all edges
     edges = list(combinations(df.columns, 2))
     previous_edges = PreviousEdges()
@@ -33,7 +30,17 @@ def llm_pairwise(var_names_and_desc, prompts, df):
         query += f'''
         Here are the causal relationships you know so far:
         {previous_edges.get_previous_relevant_edges_string(head.name, tail.name)}
-        
+        We are interested in the causal relationship between "{head.name}" and "{tail.name}".
+        '''
+
+        if include_statistics:
+            arr = df[[head.symbol, tail.symbol]].to_numpy().T
+            corr_coef = np.corrcoef(arr)[0,1]
+            corr_coef = round(corr_coef, 2)
+            query += f'''
+            To help you, the Pearson correlation coefficient between "{head.name}" and "{tail.name}" is {corr_coef}
+            '''
+        query += f'''
         Which cause-and-effect relationship is more likely? 
         A. "{head.name}" causes "{tail.name}". 
         B. "{tail.name}" causes "{head.name}". 
@@ -71,5 +78,3 @@ def llm_pairwise(var_names_and_desc, prompts, df):
     adj_matrix = previous_edges.get_adjacency_matrix([var_names_and_desc[var].name for var in df.columns])
 
     return adj_matrix
-
-  

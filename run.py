@@ -3,11 +3,11 @@ from algs.pc.pc import pc
 from algs.ges.ges import ges
 from algs.notears.notears import notears
 from algs.llm.pairwise import llm_pairwise 
+from algs.llm.bfs import llm_bfs
 from algs.dagma_baseline.dagma_wrapper import dagma_nonlinear_wrapper, dagma_linear_wrapper
 import numpy as np
 from metrics import compute_metrics
 from args import get_args
-from causalnex.structure.notears import from_numpy
 from data.var_names_and_desc import *
 import json
 import os
@@ -41,9 +41,16 @@ elif args.alg == 'dagma_linear':
 elif args.alg == 'notears':
   predicted_adj_mat = notears(data, lambda1=args.lambda1, loss_type='l2', w_threshold=args.w_threshold)
 elif args.alg == 'llm_pairwise':
-  predicted_adj_mat = llm_pairwise(VAR_NAMES_AND_DESC[args.dataset], prompts[args.dataset], df)
+  predicted_adj_mat = llm_pairwise(VAR_NAMES_AND_DESC[args.dataset], prompts[args.dataset], df, include_statistics=False)
+elif args.alg == 'llm_pairwise_with_statistics':
+  predicted_adj_mat = llm_pairwise(VAR_NAMES_AND_DESC[args.dataset], prompts[args.dataset], df, include_statistics=True)
 elif args.alg == 'llm_bfs':
-  predicted_adj_mat = llm_bfs(VAR_NAMES_AND_DESC[args.dataset], args.dataset, df)
+  predicted_adj_mat = llm_bfs(VAR_NAMES_AND_DESC[args.dataset], args.dataset, df, include_statistics=False)
+elif args.alg == 'llm_bfs_with_statistics':
+  predicted_adj_mat = llm_bfs(VAR_NAMES_AND_DESC[args.dataset], args.dataset, df, include_statistics=True)
+else:
+  raise ValueError(f"Unknown algorithm {args.alg}")
+
 
 metrics = compute_metrics(adj_mat, predicted_adj_mat)
 logdir = f"{args.logdir}/{args.dataset}/{args.n_samples}"

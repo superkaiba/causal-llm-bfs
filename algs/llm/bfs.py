@@ -10,26 +10,20 @@ from .bfs_prompts import *
 client = OpenAI(api_key='...')
 
 
-WITH_DATA = False
-
 model = "gpt-4-0125-preview"
 temperature = 0.7
 
 
-def llm_bfs(var_names_and_desc, dataset, df):
+def llm_bfs(var_names_and_desc, dataset, df, include_statistics=False):
     
     
-    if WITH_DATA:
+    if include_statistics:
         corr = df.corr()
 
     if dataset == "asia":
         message_history = asia_prompt
     elif dataset == "child":
         message_history = child_prompt
-    elif dataset == "alarm":
-        message_history = alarm_prompt
-    elif dataset == "insurance":
-        message_history = insurance_prompt
 
     nodes = [var for var in var_names_and_desc]
     for var in var_names_and_desc:
@@ -77,7 +71,7 @@ def llm_bfs(var_names_and_desc, dataset, df):
 
         prompt += f'Select variables that are caused by {to_visit}.\n'
         
-        if WITH_DATA:
+        if include_statistics:
             prompt += get_data_prompt(to_visit, corr)
 
         prompt += prompt_format
@@ -133,7 +127,7 @@ def llm_bfs(var_names_and_desc, dataset, df):
 
         prompt += f'Select variables that are caused by {to_visit}.\n'
 
-        if WITH_DATA:
+        if include_statistics:
             prompt += get_data_prompt(to_visit, corr)
         
         prompt += prompt_format

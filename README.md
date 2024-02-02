@@ -1,4 +1,4 @@
-# Efficient Full Causal Graph Discovery Using Large Language Models
+# Efficient Causal Graph Discovery Using Large Language Models
 
 ## Setup
 `conda env create -f environment.yml`

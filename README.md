@@ -5,6 +5,8 @@
 
 `conda activate LLM_for_causal`
 
+Put your OpenAI API key in the appropriate section in `algs/llm/bfs.py` and `algs/llm/pairwise.py`
+
 ## Reproducing Results
 To reproduce the results from the paper, run 
 

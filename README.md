@@ -1,7 +1,7 @@
 # Efficient Causal Graph Discovery Using Large Language Models
 Paper: [Efficient Causal Graph Discovery Using Large Language Models](https://arxiv.org/abs/2402.01207) (Jiralerspong, Chen, et. al, 2024)
 
-We propose a novel framework that leverages LLMs combined with breadth-first search for full causal graph discovery. While previous LLM-based methods require a quadratic number of pairwise queries, our work only requires a linear number of queries and outperforms all baselines on graphs of various sizes while requiring no observational data. In addition, when available, our framework can easily incorporate observational data to improve performance.
+We propose a novel framework that leverages LLMs combined with breadth-first search (BFS) for full causal graph discovery. While *previous LLM-based methods require a quadratic number of pairwise queries, our work only requires a linear number of queries* and outperforms all baselines on graphs of various sizes while requiring no observational data. In addition, when available, our framework can easily incorporate observational data to improve performance.
 
 
 ## Citing this repository

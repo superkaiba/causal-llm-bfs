@@ -1,6 +1,8 @@
 # Efficient Causal Graph Discovery Using Large Language Models
-Code to reproduce experiments from [Efficient Causal Graph Discover Using Large Language Models](https://arxiv.org/abs/2402.01207) (Jiralerspong, Chen, et. al, 2024)
-## Citing this 
+Code to reproduce experiments from [Efficient Causal Graph Discover Using Large Language Models](https://arxiv.org/abs/2402.01207) (Jiralerspong, Chen, et. al, 2024).
+Can be easily extended to deduce causal graphs from a variety of domains.
+
+## Citing this repository
 
 If you use the code or ideas from the paper for your own research, please cite 
 ```
